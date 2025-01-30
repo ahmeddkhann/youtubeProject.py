@@ -1,7 +1,5 @@
 import json
-
 file_name = "youtube.txt"
-
 def load_data():
     try:
         with open (file_name, "r") as file:
@@ -16,8 +14,14 @@ def save_data_helper(videos):
 def list_all_videos(videos):
     if not videos:
         print("No videos in the list")
+
+    print("/n")
+    print("*" * 70)
     for index, video in enumerate(videos, start=1):
-        print(f"index: {index},  video: {video}")
+        print(f"{index},  {video['name']}, duration: {video["time"]}")
+    print("/n")
+    print("*" * 70)
+
 
 def add_video(videos):
     name = input("enter name of video ")
@@ -26,11 +30,23 @@ def add_video(videos):
     save_data_helper(videos)
 
 def update_video(videos):
-    pass
+    list_all_videos(videos)
+    index = int(input("enter the video number to be update "))
+    if 1 <= index <= len(videos):
+        name = input("enter name of the new video: ")
+        time = input("enter duration of the new video")
+        videos[index-1] = {"name": name, "time":time }
+        save_data_helper(videos)
+    else:
+        print("you have entered an invalid index")
 
 def delete_video(videos):
-    pass
-
+    list_all_videos(videos)
+    index = int(input("enter the video number you want to delete "))
+    if 1 <= index <= len(videos):
+        del videos[index - 1]
+    else:
+        print("you have entered an invalid index")
 
 def main():
     videos = load_data()
