@@ -11,13 +11,19 @@ def load_data():
     
 def save_data_helper(videos):
     with open (file_name, "w") as file:
-        json.dump(videos,file)
+        json.dump(videos, file)
 
 def list_all_videos(videos):
-    pass
+    if not videos:
+        print("No videos in the list")
+    for index, video in enumerate(videos, start=1):
+        print(f"index: {index},  video: {video}")
 
 def add_video(videos):
-    pass
+    name = input("enter name of video ")
+    time = input("enter duration of video ")
+    videos.append({"name": name, "time": time})
+    save_data_helper(videos)
 
 def update_video(videos):
     pass
