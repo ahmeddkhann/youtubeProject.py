@@ -1,5 +1,17 @@
+import json
+
+file_name = "youtube.txt"
+
 def load_data():
-    pass
+    try:
+        with open (file_name, "r") as file:
+            return json.load(file) 
+    except FileNotFoundError:
+        return []
+    
+def save_data_helper(videos):
+    with open (file_name, "w") as file:
+        json.dump(videos,file)
 
 def list_all_videos(videos):
     pass
