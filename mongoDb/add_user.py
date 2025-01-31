@@ -21,3 +21,5 @@ def add_user():
     status = input("Enter the status: ")
 
     user_details(name, address, age, marks, status)
+
+#add_user()
