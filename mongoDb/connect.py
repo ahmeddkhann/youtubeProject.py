@@ -9,3 +9,10 @@ def connectToDb():
     except Exception as e:
         print(f"Error connecting to database: {e}")
         
+def create_collection():
+        try:
+            db = connectToDb()
+            collection = db["users"]
+            return collection
+        except Exception as e:
+            print(f"collection could not be created: {e}")
