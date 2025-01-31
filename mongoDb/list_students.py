@@ -7,10 +7,10 @@ def students_status():
      if status == "p" or status == "P":
           try:
                collection = create_collection()
-               students = list(collection.find({"status": "pass"}))
+               students = list(collection.find({"status": "pass"}, {"name":1, "marks":1, "status":1, "_id":0}))
                if students:
                     for student in students:
-                         print(student)
+                         print(f"Name: {student.get('name')}, Marks: {student.get('marks')}, Status: {student.get('status')}" )
                else:
                     print("no student with the status of pass")
           except Exception as e:
@@ -20,10 +20,10 @@ def students_status():
      elif status == "f" or status == "F":
           try:
                collection = create_collection()
-               students = list(collection.find({"status": "fail"}))
+               students = list(collection.find({"status": "fail"}, {"name":1, "marks":1, "status":1, "_id":0}))
                if students:
                     for student in students:
-                         print(student)
+                        print(f"Name: {student.get('name')}, Marks: {student.get('marks')}, Status: {student.get('status')}" )
                else:
                     print("no student with the status of pass")
 
