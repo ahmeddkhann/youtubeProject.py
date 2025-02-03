@@ -25,6 +25,6 @@ def update_user():
     print("Add the data of student to be updated")
     name = input("enter name of the student: ")
 
-    #user_details(name)
+    user_details(name)
 
 #update_user()
